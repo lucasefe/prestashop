@@ -8,7 +8,7 @@ module Prestashop
       attr_accessor :id_manufacturer, :id_supplier, :id_category_default, :new, :cache_default_attribute, :id_tax_rules_group, :position_in_category,
                     :manufacturer_name, :quantity, :type, :id_shop_default, :supplier_reference, :location, :width, :height, :depth,
                     :weight, :quantity_discount, :ean13, :upc, :cache_is_pack, :cache_has_attachment, :is_virtual, :on_sale, :online_only, :ecotax, :minimal_quantity,
-                    :price, :wholesale_price, :unity, :unit_price_ratio, :additional_shipping_cost, :customizable, :text_fields, :uploadable_files, :active,
+                    :price, :wholesale_price, :unity, :unit_price_ratio, :additional_shipping_cost, :customizable, :text_fields, :uploadable_files, :active, :state,
                     :redirect_type, :id_product_redirect, :available_for_order, :available_date, :condition, :show_price, :indexed, :visibility, :advanced_stock_management, :description
       attr_accessor :id_lang, :id_categories, :id_features
       attr_writer   :id, :name, :description_short, :link_rewrite, :reference, :price, :available_now, :available_later, :meta_description, :meta_keywords, :meta_title
@@ -72,6 +72,7 @@ module Prestashop
         @description_short          = args[:description_short]
         @available_now              = args[:available_now]
         @available_later            = args[:available_later]
+        @state                      = args[:state]
 
         @id_lang                    = args.fetch(:id_lang)
         @id_categories              = args[:id_categories]
@@ -125,7 +126,7 @@ module Prestashop
           active:               active,
           redirect_type:        '404',
           available_for_order:  available_for_order,
-          condition:            condition,
+          state:                state,
           show_price:           show_price,
           name:                 hash_lang(name, id_lang),
           description:          hash_lang(description, id_lang),
