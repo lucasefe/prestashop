@@ -36,11 +36,14 @@ module Prestashop
           result = Client.upload 'images', resource, id_resource, payload, file
           result[:image][:id] if result
         else
+          puts "invalid URL"
           false # Not valid url
         end
       rescue MiniMagick::Invalid
+        puts "invalid IMAGE"
         false # It's not valid image
       rescue OpenURI::HTTPError
+        puts "can't open URL"
         false # Image not found
       end
 
