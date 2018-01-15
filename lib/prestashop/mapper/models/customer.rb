@@ -5,7 +5,7 @@ module Prestashop
       resource :customers
       model :customer
       
-      attr_accessor :id_lang
+      attr_accessor :id_lang, :id_shop_default
       attr_accessor :id, :first_name, :last_name, :note, :email
 
       def initialize args = {}
@@ -15,6 +15,7 @@ module Prestashop
         @last_name       = args[:last_name]
         @note            = args[:note]
         @id_lang         = args.fetch(:id_lang)
+        @id_shop_default = args.fetch(:id_shop_default, 1)
       end
 
       def hash
